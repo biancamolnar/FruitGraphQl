@@ -10,6 +10,12 @@ export class Fruit {
 
     @Field()
     color!: string
+
+    @Field()
+    price!: number
+
+    @Field()
+    origin!: string
 }
 
 @InputType()
@@ -19,4 +25,10 @@ export class FruitInput {
 
     @Field()
     color!: string
+
+    @Field()
+    price!: number
+
+    @Field()
+    origin!: string
 }
