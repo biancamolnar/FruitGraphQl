@@ -1,12 +1,11 @@
-import { buildSchema } from 'graphql';
-import express from 'express';
-import { graphqlHTTP } from 'express-graphql';
+import { buildSchema } from "graphql";
+import express from "express";
+import { graphqlHTTP } from "express-graphql";
 
-
-const fruits = [  
-{ id: 1, name: 'Apple', color: 'Red', price: 0.89, origin: 'Germany'},  
-{ id: 2, name: 'Banana', color: 'Yellow', price: 1.29, origin: 'India'},  
-{ id: 3, name: 'Orange', color: 'Orange', price: 0.59, origin: 'Brazil'},
+const fruits = [
+  { id: 1, name: "Apple", color: "Red", price: 0.89, origin: "Germany" },
+  { id: 2, name: "Banana", color: "Yellow", price: 1.29, origin: "India" },
+  { id: 3, name: "Orange", color: "Orange", price: 0.59, origin: "Brazil" },
 ];
 
 const schema = buildSchema(`
@@ -37,8 +36,6 @@ const schema = buildSchema(`
   }
 `);
 
-
-
 type Fruit = {
   id: number;
   name: string;
@@ -47,8 +44,7 @@ type Fruit = {
   origin: string;
 };
 
-type FruitInput = Pick<Fruit, 'name' | 'color' | 'price' | 'origin'>;
-
+type FruitInput = Pick<Fruit, "name" | "color" | "price" | "origin">;
 
 const getFruit = (args: { id: number }): Fruit | undefined =>
   fruits.find((fruit) => fruit.id === args.id);
@@ -82,7 +78,6 @@ const deleteFruit = (args: { id: number }): boolean => {
   return false;
 };
 
-
 const root = {
   getFruit,
   getFruits,
@@ -94,15 +89,15 @@ const root = {
 const app = express();
 
 app.use(
-    '/graphql',
-    graphqlHTTP({
-        schema: schema,
-        rootValue: root,
-        graphiql: true,
-    })
-)
+  "/graphql",
+  graphqlHTTP({
+    schema: schema,
+    rootValue: root,
+    graphiql: true,
+  })
+);
 
 const PORT = 3000;
 
-app.listen(PORT)
+app.listen(PORT);
 console.log(`Fruit server at http://localhost:${PORT}/graphql`);

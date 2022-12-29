@@ -1,34 +1,34 @@
-import { Field, ObjectType, InputType } from 'type-graphql';
+import { Field, ObjectType, InputType } from "type-graphql";
 
 @ObjectType()
 export class Fruit {
-    @Field()
-    id!: number
+  @Field()
+  id!: number;
 
-    @Field()
-    name!: string
+  @Field()
+  name!: string;
 
-    @Field()
-    color!: string
+  @Field()
+  color!: string;
 
-    @Field()
-    price!: number
+  @Field()
+  price!: number;
 
-    @Field()
-    origin!: string
+  @Field()
+  origin!: string;
 }
 
 @InputType()
 export class FruitInput {
-    @Field()
-    name!: string
+  @Field()
+  name!: string;
 
-    @Field()
-    color!: string
+  @Field()
+  color!: string;
 
-    @Field()
-    price!: number
+  @Field()
+  price!: number;
 
-    @Field()
-    origin!: string
+  @Field()
+  origin!: string;
 }
